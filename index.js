@@ -1,61 +1,42 @@
 /* Refer to https://github.com/OleksiyRudenko/a-tiny-JS-world for the task details
    Complete the below for code reviewers' convenience:
 
-   Code repository: _put repo URL here_
-   Web app: _put project's github pages URL here_
+   Code repository: https://github.com/MitchfFirstGit/a-tiny-JS-world
+   Web app: https://mitchffirstgit.github.io/a-tiny-JS-world/
    */
 
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
-const dog = {
-  species: 'dog',
-  name: 'Toby',
-  gender: 'male',
-  legs: 4,
-  hands: 0,
-  saying: 'woof-woof'
-};
-const cat = {
-  species: 'cat',
-  name: 'Milka',
-  gender: 'female',
-  legs: 4,
-  hands: 0,
-  saying: 'meow-meow'
-};
-const woman = {
-  species: 'human',
-  name: 'Emma',
-  gender: 'female',
-  legs: 2,
-  hands: 2,
-  saying: 'Hello everyone!'
-};
-const man = {
-  species: 'human',
-  name: 'Alex',
-  gender: 'male',
-  legs: 2,
-  hands: 2,
-  saying: 'Hello everyone!'
-};
-const catWoman = {
-  species: 'catWoman',
-  name: 'Mia',
-  gender: 'female',
-  legs: 2,
-  hands: 2,
-  saying: cat.saying
-};
-
-function say(species, name, gender, legs, hands, saying){
-   print(`species: ${species}; name: ${name}; gender: ${gender}; legs: ${legs}; hands: ${hands}; saying: ${saying}`, 'div');
+class Inhabitants {
+  constructor(species, name, gender, legs, hands, saying, ...friends ) {
+  this.species = species;
+  this.name = name;
+  this.gender = gender;
+  this.legs = legs;
+  this.hands = hands;
+  this.saying = saying;
+  this.friends =friends;
+  }
+  say(){
+    if(!this.friends.length) this.friends = `I have no friends, I'm lonely in this world`;
+    if(typeof(this.saying)==='object'){
+      print(`species: ${this.species}; name: ${this.name}; gender: ${this.gender}; legs: ${this.legs}; hands: ${this.hands}; saying: ${this.saying.saying}; friends: ${this.friends}`, 'div');
+    }
+    else{ 
+      print(`species: ${this.species}; name: ${this.name}; gender: ${this.gender}; legs: ${this.legs}; hands: ${this.hands}; saying: ${this.saying}; friends: ${this.friends}`, 'div');
+    }
+  }
 }
-say(dog.species, dog.name, dog.gender, dog.legs, dog.hands, dog.saying);
-say(cat.species, cat.name, cat.gender, cat.legs, cat.hands, cat.saying);
-say(woman.species, woman.name, woman.gender, woman.legs, woman.hands, woman.saying);
-say(man.species, man.name, man.gender, man.legs, man.hands, man.saying);
-say(catWoman.species, catWoman.name, catWoman.gender, catWoman.legs, catWoman.hands, catWoman.saying);
+const dog = new Inhabitants('dog', 'Toby', 'male', 4, 0, 'woof-woof', 'man', 'woman');
+const cat = new Inhabitants('cat', 'Milka', 'female', 4, 0, 'meow-meow', 'man', 'woman');
+const woman = new Inhabitants('woman', 'Emma', 'female', 2, 2, 'Hello everyone!', 'man', 'cat', 'dog');
+const man = new Inhabitants('man', 'Alex', 'male',2, 2, 'Hello everyone!', 'dog', 'cat', 'woman');
+const catWoman = new Inhabitants('catWoman', 'Mia', 'female',2, 2, cat);
+dog.say();
+cat.say();
+woman.say();
+man.say();
+catWoman.say();
 // ======== OUTPUT ========
 /* Use print(message) for output.
    Default tag for message is <pre>. Use print(message,'div') to change containing element tag.
