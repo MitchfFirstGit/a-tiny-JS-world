@@ -7,7 +7,7 @@
 
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
-class Inhabitants {
+class Inhabitant {
   constructor(species, name, gender, legs, hands, saying, ...friends ) {
   this.species = species;
   this.name = name;
@@ -27,11 +27,11 @@ class Inhabitants {
     }
   }
 }
-const dog = new Inhabitants('dog', 'Toby', 'male', 4, 0, 'woof-woof', 'man', 'woman');
-const cat = new Inhabitants('cat', 'Milka', 'female', 4, 0, 'meow-meow', 'man', 'woman');
-const woman = new Inhabitants('woman', 'Emma', 'female', 2, 2, 'Hello everyone!', 'man', 'cat', 'dog');
-const man = new Inhabitants('man', 'Alex', 'male',2, 2, 'Hello everyone!', 'dog', 'cat', 'woman');
-const catWoman = new Inhabitants('catWoman', 'Mia', 'female',2, 2, cat);
+const dog = new Inhabitant('dog', 'Toby', 'male', 4, 0, 'woof-woof', 'man', 'woman');
+const cat = new Inhabitant('cat', 'Milka', 'female', 4, 0, 'meow-meow', 'man', 'woman');
+const woman = new Inhabitant('woman', 'Emma', 'female', 2, 2, 'Hello everyone!', 'man', 'cat', 'dog');
+const man = new Inhabitant('man', 'Alex', 'male',2, 2, 'Hello everyone!', 'dog', 'cat', 'woman');
+const catWoman = new Inhabitant('catWoman', 'Mia', 'female',2, 2, cat);
 dog.say();
 cat.say();
 woman.say();
